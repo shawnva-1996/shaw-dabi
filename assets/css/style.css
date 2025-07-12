@@ -169,6 +169,7 @@ p {
     position: relative; /* For z-index if needed, or if future animations are added */
     z-index: 2; /* Ensure it's above the gallery background */
     animation: fadeInScale 1s ease-out forwards;
+    /* Removed transform: translateZ(0); - not needed without parallax */
 }
 
 /* Image gallery on the right */
@@ -178,6 +179,8 @@ p {
     height: 100%; /* Take full height of the hero section */
     position: relative; /* Essential for absolute positioning of cycling images *inside* it */
     overflow: hidden; /* CRUCIAL: Ensures image content is clipped to this container's bounds */
+    /* Removed transform: translateZ(-1px) scale(2); - This was causing the cropping */
+    /* Removed transition: transform 0.1s ease-out; - Not needed without parallax transform */
 }
 
 /* Styles for the cycling images - now absolutely positioned *within* .hero-gallery */
@@ -275,7 +278,7 @@ p {
     margin-top: 30px;
     padding: 20px;
     background-color: var(--light-bg);
-    border-radius: 8px;
+    border-radius: 8px; /* Corrected typo 8_px to 8px */
     border-left: 5px solid var(--accent-color);
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
@@ -321,10 +324,8 @@ p {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
     grid-gap: 30px; /* Space between cards */
-    /* CRITICAL for Masonry: Allows rows to size based on content, enabling staggering */
-    grid-auto-rows: minmax(min-content, auto);
-    /* CRITICAL for Masonry: Aligns items to the start of their implicit grid row, preventing them from stretching */
-    align-items: start;
+    grid-auto-rows: minmax(min-content, auto); /* Allows items to size dynamically */
+    align-items: start; /* Align items to the start of their grid area */
 }
 
 .testimonial-card {
@@ -334,7 +335,7 @@ p {
     box-shadow: 0 6px 20px var(--shadow-light);
     display: flex;
     flex-direction: column;
-    height: auto; /* IMPORTANT: Allows height to adjust based on content for staggering */
+    height: auto; /* Allow height to adjust based on content */
     position: relative; /* For quote icon positioning */
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
