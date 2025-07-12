@@ -18,17 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(showNextImage, 5000); // Change image every 5 seconds
     }
 
-    // Hero Content Parallax (Subtle)
-    const heroContent = document.querySelector('.hero-content');
-    const heroGallery = document.querySelector('.hero-gallery'); // The background images
-
-    window.addEventListener('scroll', () => {
-        const scrollPos = window.scrollY;
-        // Adjust these values to control the parallax strength
-        // A smaller division means stronger parallax effect
-        heroGallery.style.transform = `translateZ(-1px) scale(2) translateY(${scrollPos * 0.1}px)`;
-        // heroContent.style.transform = `translateY(${scrollPos * -0.1}px)`; // For content to move slightly faster than foreground
-    });
+    // Removed: Hero Content Parallax - as it was conflicting with layout
+    // The previous code snippet for parallax JS was here and has been removed.
 
 
     // Fade-in sections on scroll
