@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | Shawn Dabi</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,6 +39,68 @@
         body.state-editor #editor-section {
             display: block;
         }
+
+        /* --- MOBILE FRIENDLY TABLE --- */
+        @media (max-width: 768px) {
+            /* Hide the table header on small screens */
+            .table-responsive thead {
+                display: none;
+            }
+            /* Make table rows display as blocks */
+            .table-responsive tbody tr {
+                display: block;
+                margin-bottom: 1rem;
+                border: 1px solid #ddd;
+                border-radius: 0.5rem;
+                padding: 1rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            }
+            /* Make table cells display as blocks and add labels */
+            .table-responsive td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.5rem 0;
+                border: none;
+                text-align: left;
+            }
+            /* Add a label before each cell's content */
+            .table-responsive td:before {
+                content: attr(data-label);
+                font-weight: bold;
+                padding-right: 1rem;
+                flex-shrink: 0;
+            }
+            /* Specific adjustments for certain columns */
+            .table-responsive td[data-label="Story"] {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-bottom: 0.5rem;
+            }
+            .table-responsive td[data-label="Story"]:before {
+                margin-bottom: 0.5rem;
+            }
+            .table-responsive td[data-label="Actions"] {
+                justify-content: flex-end;
+            }
+            .table-responsive td[data-label="Actions"]:before {
+                display: none; /* Hide label for actions */
+            }
+            /* Ensure text wrapping */
+            .table-responsive td, .table-responsive th {
+                word-break: break-word;
+            }
+            /* Hide the drag handle and order columns on mobile */
+            .drag-handle-col, .order-col {
+                display: none;
+            }
+            .reorder-notice {
+                text-align: center;
+            }
+            .reorder-notice p:last-child {
+                display: none; /* Hide desktop-specific reorder instruction */
+            }
+        }
     </style>
 </head>
 <body class="text-gray-800 state-login">
@@ -67,16 +129,16 @@
         </header>
         <main class="container mx-auto px-6 py-8">
             <h2 class="text-2xl font-bold mb-6">Submitted Stories</h2>
-            <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6 rounded-md" role="alert">
+            <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6 rounded-md reorder-notice" role="alert">
                 <p class="font-bold">Reorder Testimonials</p>
-                <p>Click and drag the <i class="fas fa-grip-vertical"></i> handle to change the display order.</p>
+                <p>On desktop, click and drag the <i class="fas fa-grip-vertical"></i> handle to change the display order.</p>
             </div>
             <div class="bg-white rounded-xl shadow-lg overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500">
+                <table class="w-full text-sm text-left text-gray-500 table-responsive">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>
-                            <th scope="col" class="px-2 py-3 w-12"></th>
-                            <th scope="col" class="px-6 py-3">Order</th>
+                            <th scope="col" class="px-2 py-3 w-12 drag-handle-col"></th>
+                            <th scope="col" class="px-6 py-3 order-col">Order</th>
                             <th scope="col" class="px-6 py-3">Client</th>
                             <th scope="col" class="px-6 py-3">Story</th>
                             <th scope="col" class="px-6 py-3">Status</th>
@@ -134,12 +196,12 @@
         import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, query, onSnapshot, doc, updateDoc, orderBy, getDoc, deleteDoc, addDoc, serverTimestamp, writeBatch } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         import { getStorage, ref as storageRef, deleteObject, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js";
-        
+
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
         const storage = getStorage(app);
-        
+
         const loginForm = document.getElementById('login-form');
         const logoutBtn = document.getElementById('logout-btn');
         const createNewBtn = document.getElementById('create-new-btn');
@@ -172,7 +234,7 @@
             const submitButton = loginForm.querySelector('button[type="submit"]');
             submitButton.disabled = true;
             submitButton.textContent = 'Logging in...';
-            loginErrorEl.textContent = ''; 
+            loginErrorEl.textContent = '';
 
             signInWithEmailAndPassword(auth, loginForm.email.value, loginForm.password.value)
                 .catch(error => {
@@ -185,7 +247,7 @@
         });
 
         logoutBtn.addEventListener('click', () => signOut(auth));
-        
+
         // --- All other functions remain the same as your previous working version ---
         // (loadTestimonials, updateDisplayOrder, openEditor, etc.)
         let currentDeleteInfo = { id: null, imageUrl: null };
@@ -200,14 +262,14 @@
                     const story = doc.data();
                     storyTableBody.innerHTML += `
                         <tr class="bg-white border-b hover:bg-gray-50" data-id="${doc.id}">
-                            <td class="px-2 py-4 text-center drag-handle cursor-move"><i class="fas fa-grip-vertical text-gray-400"></i></td>
-                            <td class="px-6 py-4 font-medium text-gray-900">${story.displayOrder ?? 'N/A'}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900">${story.clientName}<span class="block text-xs text-gray-500">${story.profession}</span></td>
-                            <td class="px-6 py-4 max-w-sm truncate" title="${story.testimonial}">${story.testimonial}</td>
-                            <td class="px-6 py-4"><span class="px-2 py-1 text-xs font-medium rounded-full ${story.isApproved ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}">${story.isApproved ? 'Approved' : 'Pending'}</span></td>
-                            <td class="px-6 py-4 flex items-center space-x-2">
+                            <td class="px-2 py-4 text-center drag-handle cursor-move drag-handle-col"><i class="fas fa-grip-vertical text-gray-400"></i></td>
+                            <td class="px-6 py-4 font-medium text-gray-900 order-col" data-label="Order">${story.displayOrder ?? 'N/A'}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900" data-label="Client">${story.clientName}<span class="block text-xs text-gray-500">${story.profession}</span></td>
+                            <td class="px-6 py-4 story-col break-words" title="${story.testimonial}" data-label="Story">${story.testimonial}</td>
+                            <td class="px-6 py-4" data-label="Status"><span class="px-2 py-1 text-xs font-medium rounded-full ${story.isApproved ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}">${story.isApproved ? 'Approved' : 'Pending'}</span></td>
+                            <td class="px-6 py-4 flex items-center space-x-2" data-label="Actions">
                                 <button data-id="${doc.id}" class="approve-btn text-xs py-1 px-3 rounded-lg ${story.isApproved ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-600 text-white hover:bg-green-700'}" ${story.isApproved ? 'disabled' : ''}>${story.isApproved ? 'Approved' : 'Approve'}</button>
-                                <button data-id="${doc.id}" class="edit-btn text-blue-600 hover:text-blue-800" title="Edit"><i class="fas fa-pencil-alt"></i></button>
+                                <button data-id="${doc.id}" class="edit-btn text-blue-600 hover:text-blue-800 py-2 px-3 rounded-lg" title="Edit"><i class="fas fa-pencil-alt"></i> Edit</button>
                                 <button data-id="${doc.id}" data-image-url="${story.imageUrl || ''}" class="delete-btn text-red-600 hover:text-red-800" title="Delete"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>`;
@@ -347,4 +409,5 @@
         });
     </script>
 </body>
+
 </html>
