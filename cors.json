@@ -1,0 +1,12 @@
+[
+  {
+    "origin": [
+      "http://127.0.0.1:3000",
+      "http://localhost:3000",
+      "https://shawndabi.com"
+    ],
+    "method": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    "responseHeader": ["Content-Type", "Authorization"],
+    "maxAgeSeconds": 3600
+  }
+]

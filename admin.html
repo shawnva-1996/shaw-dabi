@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Shawn Dabi</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        h1, h2, h3, .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Style for the row being dragged */
+        .sortable-ghost { background-color: #e0f2fe; opacity: 0.7; }
+        .sortable-drag { background-color: #f0f9ff; }
+
+        /* --- NEW STATE-BASED VIEW LOGIC --- */
+        /* By default, hide all main sections */
+        #login-section, #dashboard-section, #editor-section {
+            display: none;
+        }
+        /* Show the correct section based on the body's class */
+        body.state-login #login-section {
+            display: flex;
+        }
+        body.state-dashboard #dashboard-section {
+            display: block;
+        }
+        body.state-editor #editor-section {
+            display: block;
+        }
+    </style>
+</head>
+<body class="text-gray-800 state-login">
+
+    <section id="login-section" class="items-center justify-center min-h-screen">
+        <div class="w-full max-w-md bg-white p-8 rounded-xl shadow-lg">
+            <h1 class="font-poppins text-2xl font-bold text-center text-gray-700 mb-6">Admin Login</h1>
+            <form id="login-form" novalidate>
+                <div class="mb-4"><label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label><input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"></div>
+                <div class="mb-6"><label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label><input type="password" id="password" name="password" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"></div>
+                <button type="submit" class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition">Login</button>
+                <p id="login-error" class="text-center text-red-500 text-sm mt-4 min-h-[1.2em]"></p>
+            </form>
+        </div>
+    </section>
+
+    <section id="dashboard-section">
+        <header class="bg-white shadow-md">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <h1 class="font-poppins text-xl font-bold text-gray-700">Testimonial Dashboard</h1>
+                <div class="flex items-center space-x-4">
+                    <button id="create-new-btn" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition text-sm"><i class="fas fa-plus mr-2"></i>Create New</button>
+                    <button id="logout-btn" class="bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600 transition text-sm">Logout</button>
+                </div>
+            </div>
+        </header>
+        <main class="container mx-auto px-6 py-8">
+            <h2 class="text-2xl font-bold mb-6">Submitted Stories</h2>
+            <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6 rounded-md" role="alert">
+                <p class="font-bold">Reorder Testimonials</p>
+                <p>Click and drag the <i class="fas fa-grip-vertical"></i> handle to change the display order.</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-2 py-3 w-12"></th>
+                            <th scope="col" class="px-6 py-3">Order</th>
+                            <th scope="col" class="px-6 py-3">Client</th>
+                            <th scope="col" class="px-6 py-3">Story</th>
+                            <th scope="col" class="px-6 py-3">Status</th>
+                            <th scope="col" class="px-6 py-3">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="story-table-body"></tbody>
+                </table>
+            </div>
+        </main>
+    </section>
+
+    <section id="editor-section" class="container mx-auto px-6 py-8">
+         <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl mx-auto">
+            <div class="p-6 border-b"><h3 id="editor-title" class="text-xl font-bold font-poppins">Edit Testimonial</h3></div>
+            <div class="p-6">
+                <form id="editor-form" class="">
+                    <input type="hidden" id="editor-doc-id"><input type="hidden" id="editor-image-url">
+                    <div class="mb-6"><label class="block text-sm font-medium text-gray-700 mb-2">Client Photo</label>
+                        <div class="flex items-center space-x-4"><img id="editor-image-preview" src="" class="w-32 h-32 object-cover rounded-lg bg-gray-200" alt="Image preview">
+                            <div class="space-y-2">
+                                <label for="editor-clientPhoto" class="cursor-pointer bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50"><span>Change Photo</span><input type="file" id="editor-clientPhoto" class="sr-only"></label>
+                                <button type="button" id="remove-photo-btn" class="bg-red-100 text-red-700 py-2 px-3 border border-transparent rounded-md text-sm font-medium hover:bg-red-200">Remove Photo</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                        <div><label for="editor-clientName" class="block text-sm font-medium text-gray-700">Client Name</label><input type="text" id="editor-clientName" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"></div>
+                        <div><label for="editor-profession" class="block text-sm font-medium text-gray-700">Profession</label><input type="text" id="editor-profession" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"></div>
+                    </div>
+                    <div class="mb-4"><label for="editor-displayOrder" class="block text-sm font-medium text-gray-700">Display Order (Manual Override)</label><input type="number" id="editor-displayOrder" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="e.g., 1, 2, 3..."><p class="text-xs text-gray-500 mt-1">Primarily managed by drag-and-drop. Lower numbers appear first.</p></div>
+                    <div class="mb-4"><label for="editor-testimonial" class="block text-sm font-medium text-gray-700">Testimonial</label><textarea id="editor-testimonial" rows="5" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"></textarea></div>
+                </form>
+                <div id="delete-confirmation" class="hidden"><p>Are you sure you want to delete this testimonial? This will also delete the associated photo and cannot be undone.</p></div>
+            </div>
+            <div class="p-4 bg-gray-50 flex justify-end space-x-3 rounded-b-lg">
+                <button id="editor-cancel-btn" class="bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-lg hover:bg-gray-300">Cancel</button>
+                <button id="editor-save-btn" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700">Save Changes</button>
+                <button id="editor-delete-confirm-btn" class="hidden bg-red-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-700">Yes, Delete</button>
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        const firebaseConfig = {
+            apiKey: "AIzaSyB5lFiB9grDsedR9osrB2zvE71l91zHjz0",
+            authDomain: "va-solutions-eadd3.firebaseapp.com",
+            projectId: "va-solutions-eadd3",
+            storageBucket: "va-solutions-eadd3.firebasestorage.app",
+            messagingSenderId: "365317326824",
+            appId: "1:365317326824:web:f7e4c5da7aabe12120865d",
+            measurementId: "G-8PS1VPG0R5"
+        };
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, query, onSnapshot, doc, updateDoc, orderBy, getDoc, deleteDoc, addDoc, serverTimestamp, writeBatch } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getStorage, ref as storageRef, deleteObject, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js";
+        
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+        
+        const loginForm = document.getElementById('login-form');
+        const logoutBtn = document.getElementById('logout-btn');
+        const createNewBtn = document.getElementById('create-new-btn');
+        const storyTableBody = document.getElementById('story-table-body');
+        const editorForm = document.getElementById('editor-form');
+        const deleteConfirmation = document.getElementById('delete-confirmation');
+        const editorCancelBtn = document.getElementById('editor-cancel-btn');
+        const editorSaveBtn = document.getElementById('editor-save-btn');
+        const editorDeleteConfirmBtn = document.getElementById('editor-delete-confirm-btn');
+        // ... (other element getters)
+
+        // --- REFACTORED VIEW-SWITCHING LOGIC ---
+        const bodyEl = document.body;
+        function showDashboard() { bodyEl.className = 'text-gray-800 state-dashboard'; }
+        function showEditor() { bodyEl.className = 'text-gray-800 state-editor'; }
+        function showLogin() { bodyEl.className = 'text-gray-800 state-login'; }
+
+        onAuthStateChanged(auth, user => {
+            if (user) {
+                showDashboard();
+                loadTestimonials();
+            } else {
+                showLogin();
+            }
+        });
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const loginErrorEl = document.getElementById('login-error');
+            const submitButton = loginForm.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Logging in...';
+            loginErrorEl.textContent = ''; 
+
+            signInWithEmailAndPassword(auth, loginForm.email.value, loginForm.password.value)
+                .catch(error => {
+                    loginErrorEl.textContent = "Invalid email or password.";
+                })
+                .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Login';
+                });
+        });
+
+        logoutBtn.addEventListener('click', () => signOut(auth));
+        
+        // --- All other functions remain the same as your previous working version ---
+        // (loadTestimonials, updateDisplayOrder, openEditor, etc.)
+        let currentDeleteInfo = { id: null, imageUrl: null };
+        const placeholderImg = `https://placehold.co/400x400/E2E8F0/4A5568?text=No+Image`;
+        let sortableInstance = null;
+        function loadTestimonials() {
+            const q = query(collection(db, "testimonials"), orderBy("displayOrder", "asc"), orderBy("submittedAt", "desc"));
+            onSnapshot(q, (snapshot) => {
+                if (sortableInstance) sortableInstance.destroy();
+                storyTableBody.innerHTML = snapshot.empty ? '<tr><td colspan="6" class="text-center p-8">No submissions yet.</td></tr>' : '';
+                snapshot.forEach(doc => {
+                    const story = doc.data();
+                    storyTableBody.innerHTML += `
+                        <tr class="bg-white border-b hover:bg-gray-50" data-id="${doc.id}">
+                            <td class="px-2 py-4 text-center drag-handle cursor-move"><i class="fas fa-grip-vertical text-gray-400"></i></td>
+                            <td class="px-6 py-4 font-medium text-gray-900">${story.displayOrder ?? 'N/A'}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900">${story.clientName}<span class="block text-xs text-gray-500">${story.profession}</span></td>
+                            <td class="px-6 py-4 max-w-sm truncate" title="${story.testimonial}">${story.testimonial}</td>
+                            <td class="px-6 py-4"><span class="px-2 py-1 text-xs font-medium rounded-full ${story.isApproved ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}">${story.isApproved ? 'Approved' : 'Pending'}</span></td>
+                            <td class="px-6 py-4 flex items-center space-x-2">
+                                <button data-id="${doc.id}" class="approve-btn text-xs py-1 px-3 rounded-lg ${story.isApproved ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-600 text-white hover:bg-green-700'}" ${story.isApproved ? 'disabled' : ''}>${story.isApproved ? 'Approved' : 'Approve'}</button>
+                                <button data-id="${doc.id}" class="edit-btn text-blue-600 hover:text-blue-800" title="Edit"><i class="fas fa-pencil-alt"></i></button>
+                                <button data-id="${doc.id}" data-image-url="${story.imageUrl || ''}" class="delete-btn text-red-600 hover:text-red-800" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>`;
+                });
+                sortableInstance = new Sortable(storyTableBody, {
+                    handle: '.drag-handle', animation: 150, ghostClass: 'sortable-ghost',
+                    onEnd: updateDisplayOrder,
+                });
+            }, (error) => {
+                console.error("🔥 FIRESTORE ERROR in loadTestimonials:", error);
+                alert("CRITICAL ERROR: Could not load testimonials from the database. Check the console for details. The most likely cause is a missing Firestore index.");
+            });
+        }
+        async function updateDisplayOrder() {
+            const rows = storyTableBody.querySelectorAll('tr');
+            const batch = writeBatch(db);
+            rows.forEach((row, index) => {
+                const docId = row.dataset.id;
+                if(docId){
+                    const docRef = doc(db, 'testimonials', docId);
+                    batch.update(docRef, { displayOrder: index });
+                }
+            });
+            await batch.commit();
+        }
+        editorCancelBtn.addEventListener('click', showDashboard);
+        async function openEditor(docId = null) {
+            const editorDocIdInput = document.getElementById('editor-doc-id');
+            const editorImageUrlInput = document.getElementById('editor-image-url');
+            const editorClientNameInput = document.getElementById('editor-clientName');
+            const editorProfessionInput = document.getElementById('editor-profession');
+            const editorDisplayOrderInput = document.getElementById('editor-displayOrder');
+            const editorTestimonialInput = document.getElementById('editor-testimonial');
+            const editorImagePreview = document.getElementById('editor-image-preview');
+
+            editorForm.reset();
+            let data = { clientName: '', profession: '', testimonial: '', imageUrl: '', displayOrder: 999 };
+            if(docId) {
+                document.getElementById('editor-title').textContent = "Edit Testimonial";
+                const docSnap = await getDoc(doc(db, "testimonials", docId));
+                if (docSnap.exists()) data = docSnap.data();
+            } else {
+                document.getElementById('editor-title').textContent = "Create New Testimonial";
+            }
+            editorDocIdInput.value = docId || '';
+            editorImageUrlInput.value = data.imageUrl || '';
+            editorClientNameInput.value = data.clientName;
+            editorProfessionInput.value = data.profession;
+            editorTestimonialInput.value = data.testimonial;
+            editorDisplayOrderInput.value = data.displayOrder ?? 999;
+            editorImagePreview.src = data.imageUrl || placeholderImg;
+            editorForm.classList.remove('hidden');
+            deleteConfirmation.classList.add('hidden');
+            editorSaveBtn.textContent = docId ? 'Save Changes' : 'Create Testimonial';
+            editorSaveBtn.classList.remove('hidden');
+            editorDeleteConfirmBtn.classList.add('hidden');
+            showEditor();
+        }
+        createNewBtn.addEventListener('click', () => openEditor());
+        storyTableBody.addEventListener('click', async (e) => {
+            const button = e.target.closest('button');
+            if (!button) return;
+            const docId = button.dataset.id;
+            if (button.classList.contains('approve-btn')) {
+                await updateDoc(doc(db, "testimonials", docId), { isApproved: true });
+            } else if (button.classList.contains('edit-btn')) {
+                openEditor(docId);
+            } else if (button.classList.contains('delete-btn')) {
+                currentDeleteInfo = { id: docId, imageUrl: button.dataset.imageUrl };
+                document.getElementById('editor-title').textContent = "Confirm Deletion";
+                editorForm.classList.add('hidden');
+                deleteConfirmation.classList.remove('hidden');
+                editorSaveBtn.classList.add('hidden');
+                editorDeleteConfirmBtn.classList.remove('hidden');
+                showEditor();
+            }
+        });
+        document.getElementById('editor-clientPhoto').addEventListener('change', (e) => { if(e.target.files[0]) document.getElementById('editor-image-preview').src = URL.createObjectURL(e.target.files[0]); });
+        document.getElementById('remove-photo-btn').addEventListener('click', () => {
+             document.getElementById('editor-image-preview').src = placeholderImg;
+             document.getElementById('editor-clientPhoto').value = '';
+             document.getElementById('editor-image-url').value = 'DELETE';
+        });
+        editorSaveBtn.addEventListener('click', async () => {
+            const editorDocIdInput = document.getElementById('editor-doc-id');
+            const docId = editorDocIdInput.value;
+            editorSaveBtn.disabled = true;
+            try {
+                let imageUrl = document.getElementById('editor-image-url').value;
+                const newPhotoFile = document.getElementById('editor-clientPhoto').files[0];
+                if (imageUrl === 'DELETE') {
+                    if (docId) {
+                        const oldImageUrl = (await getDoc(doc(db, "testimonials", docId))).data().imageUrl;
+                        if(oldImageUrl) await deleteObject(storageRef(storage, oldImageUrl));
+                    }
+                    imageUrl = '';
+                } else if (newPhotoFile) {
+                    const storageRefPath = `testimonials/${Date.now()}_${newPhotoFile.name}`;
+                    const imageRef = storageRef(storage, storageRefPath);
+                    await uploadBytes(imageRef, newPhotoFile);
+                    imageUrl = await getDownloadURL(imageRef);
+                }
+                const data = {
+                    clientName: document.getElementById('editor-clientName').value,
+                    profession: document.getElementById('editor-profession').value,
+                    testimonial: document.getElementById('editor-testimonial').value,
+                    displayOrder: Number(document.getElementById('editor-displayOrder').value) || 999,
+                    imageUrl: imageUrl,
+                };
+                if (docId) {
+                    await updateDoc(doc(db, "testimonials", docId), data);
+                } else {
+                    data.isApproved = true; data.submittedAt = serverTimestamp();
+                    await addDoc(collection(db, 'testimonials'), data);
+                }
+                showDashboard();
+            } catch (error) {
+                console.error("Error saving testimonial:", error);
+                alert("Could not save testimonial.");
+            } finally {
+                editorSaveBtn.disabled = false;
+            }
+        });
+        editorDeleteConfirmBtn.addEventListener('click', async () => {
+            const { id, imageUrl } = currentDeleteInfo;
+            if (!id) return;
+            editorDeleteConfirmBtn.disabled = true;
+            try {
+                await deleteDoc(doc(db, "testimonials", id));
+                if (imageUrl) await deleteObject(storageRef(storage, imageUrl));
+            } catch (error) {
+                if (error.code !== 'storage/object-not-found') { console.error("Error deleting:", error); alert("Could not delete."); }
+            } finally {
+                editorDeleteConfirmBtn.disabled = false;
+                showDashboard();
+            }
+        });
+    </script>
+</body>
+</html>

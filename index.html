@@ -1,976 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SEO Optimized Title -->
-    <title>Shawn Dabi | Financial Planner in Singapore for Filipinos & OFWs</title>
-
+    <title>Shawn Dabi | Financial Planner for Filipinos & Professionals in Singapore</title>
     <!-- SEO Optimized Meta Tags -->
-    <meta
-      name="description"
-      content="Shawn Dabi is a trusted financial planner in Singapore, specializing in helping Filipinos and OFWs build a secure financial future through insurance, savings, and investment."
-    />
-    <meta
-      name="keywords"
-      content="singapore financial planner, financial planner for filipino, ofw financial advisor, shawn dabi, viz alliance, financial advisor singapore, insurance singapore, investment for ofws"
-    />
+    <meta name="description" content="Shawn Dabi helps Filipinos, OFWs, and Singaporean professionals achieve their financial goals. Specializing in retirement planning, investments, and making your time in Singapore count.">
+    <meta name="keywords" content="financial planner singapore, ofw investment philippines, filipino financial advisor, shawn dabi, retirement planning singapore, srs cpf investment">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>SD</text></svg>">
 
-    <!-- Google Fonts (with font-display: swap for performance) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Font Awesome for Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-    <!-- External Stylesheet (ensure this path is correct) -->
-    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        /* Custom Styles & Tailwind Config */
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: #212427; }
+        h1, h2, h3, h4, .font-poppins { font-family: 'Poppins', sans-serif; }
+        .bg-brand-background { background-color: #F8F9FA; }
+        .bg-brand-secondary { background-color: #005F73; }
+        .text-brand-secondary { color: #005F73; }
+        .text-brand-primary { color: #FF7A59; }
+        .btn-primary { background-color: #FF7A59; color: white; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .testimonial-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .testimonial-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+        .nav-link { transition: color 0.2s ease; }
+        .nav-link:hover { color: #FF7A59; }
+        
+        /* Slideshow Styles */
+        .hero-slideshow .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            border-radius: 1.5rem; /* 24px */
+        }
+        .hero-slideshow .slide.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-brand-background">
 
-    <!-- JSON-LD Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FinancialService",
-      "name": "Shawn Dabi - Financial Planner",
-      "image": "https://placehold.co/500x500/0A2540/FFFFFF?text=SD",
-      "@id": "",
-      "url": "YOUR_WEBSITE_URL_HERE",
-      "telephone": "+6594756001",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Singapore",
-        "addressCountry": "SG"
-      },
-      "description": "Trusted financial planning and insurance services in Singapore, specializing in helping Filipinos and OFWs achieve their financial goals.",
-      "provider": {
-        "@type": "Person",
-        "name": "Shawn Dabi"
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "Singapore"
-      }
-    }
-    </script>
-  </head>
-  <body>
-    <nav class="navbar">
-      <div class="container nav-container">
-        <a href="index.html" class="nav-logo">Shawn Dabi</a>
-        <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="#story" class="nav-link">About</a></li>
-          <li><a href="resources.html" class="nav-link">Resources</a></li>
-          <li><a href="#contact" class="nav-link cta-button">Contact Me</a></li>
-        </ul>
-        <div class="hamburger">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
+    <!-- Navigation -->
+    <nav id="navbar" class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" class="font-poppins text-2xl font-bold text-brand-secondary">Shawn Dabi</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="nav-link text-gray-700 font-medium">About</a>
+                    <a href="#testimonials" class="nav-link text-gray-700 font-medium">Client Stories</a>
+                    <a href="#content" class="nav-link text-gray-700 font-medium">Insights</a>
+                    <a href="#contact" class="nav-link text-gray-700 font-medium">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#about" class="block py-2 text-gray-700 font-medium">About</a>
+            <a href="#testimonials" class="block py-2 text-gray-700 font-medium">Client Stories</a>
+            <a href="#content" class="block py-2 text-gray-700 font-medium">Insights</a>
+            <a href="#contact" class="block py-2 text-gray-700 font-medium">Contact</a>
+        </div>
     </nav>
 
-    <header class="hero-section">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-text">
-            <img
-              src="assets/images/optimized_images/va_logo.png"
-              alt="Viz Alliance Logo"
-              class="logo"
-              width="150"
-            />
-            <h1>Secure Your Future in Singapore</h1>
-            <p>Your trusted financial planner specializing in guiding Filipinos & OFWs.</p>
-            <div class="contact-links">
-              <a href="https://www.facebook.com/shawn.dabi.90/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-              <a href="https://www.instagram.com/shawnlemuel_/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="https://www.tiktok.com/@shawnlemuel" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-              <a href="https://wa.me/6594756001" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-              <a href="tel:+6594756001" aria-label="Phone"><i class="fas fa-phone"></i></a>
+    <!-- Hero Section -->
+    <header class="bg-white">
+        <div class="container mx-auto px-6 py-16 md:py-24">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-center md:text-left">
+                    <span class="font-poppins text-brand-primary font-semibold">Your Financial Partner in Singapore</span>
+                    <h1 class="text-4xl md:text-6xl font-bold text-brand-secondary mt-2 mb-6">Make Your Time Here Count</h1>
+                    <p class="text-lg text-gray-600 mb-8">I help Filipinos, OFWs, and Singaporean professionals build a secure financial future—whether that's retiring comfortably back home, funding a business, or growing your investments.</p>
+                    <a href="#contact" class="btn-primary font-bold py-3 px-8 rounded-full inline-block text-lg">Let's Plan Your Future</a>
+                </div>
+                <!-- Hero Slideshow Container -->
+                <div id="hero-slideshow" class="hero-slideshow relative aspect-square w-full max-w-md mx-auto shadow-xl rounded-2xl bg-gray-200">
+                    <!-- Images will be loaded here by JavaScript -->
+                    <div class="flex items-center justify-center h-full">
+                        <i class="fas fa-spinner fa-spin text-3xl text-brand-secondary"></i>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="hero-slideshow">
-             <!-- IMPORTANT: These images are above the fold and should not be lazy-loaded. Ensure they are well-compressed. -->
-            <img src="assets/images/optimized_images/sharmaine.webp" alt="Shawn with his client, Sharmaine" class="slide" width="500" height="500"/>
-            <img src="assets/images/optimized_images/javen.webp" alt="Shawn with his client, Javen" class="slide" width="500" height="500"/>
-            <img src="assets/images/optimized_images/dr_bing.webp" alt="Shawn with his client, Dr. Bing" class="slide" width="500" height="500"/>
-          </div>
         </div>
-      </div>
     </header>
 
     <main>
-      <section id="story" class="story-section">
-        <div class="container">
-          <h2>My Journey, Your Security</h2>
-          <p>After 2 years of auditing experience in the Big 4, and becoming a software engineer degree holder, Shawn chose a career to serve. This is his 2nd year serving his family of friends and clients.</p>
-          <p>Shawn serves over 100 clients. He firmly believes in constant learning and embodying a spirit of excellence in everything that he does so that he can continue improving himself and add value to his clients and people around him.</p>
-        </div>
-      </section>
-
-      <section class="testimonials-section">
-        <div class="container">
-          <h2>Client Stories & Testimonials</h2>
-          <p class="subtitle">The real measure of success is the peace of mind my clients enjoy.</p>
-          <div class="testimonial-grid">
-
-            <!-- Sharmaine Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/sharmaine.webp" alt="Sharmaine, Nurse" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"I’m truly thankful to Shawn for guiding me with such care and wisdom. Saving early in Singapore has been life-changing for me—it’s given me peace of mind, and the freedom to focus on my goals without being held back by financial stress."</p>
-                <div class="testimonial-author">
-                    <h3>Sharmaine</h3>
-                    <span>Nurse</span>
+        <!-- About Section -->
+        <section id="about" class="py-16 md:py-24">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="font-poppins text-3xl md:text-4xl font-bold text-brand-secondary mb-4">My Journey, Your Security</h2>
+                <div class="max-w-3xl mx-auto">
+                    <p class="text-gray-700 mb-4">After my time as an auditor in the Big 4 and earning a degree in software engineering, I found my true calling in serving others through financial planning. Now in my second year, I'm privileged to serve a growing family of over 100 clients.</p>
+                    <p class="text-gray-700">My mission is simple: to bring a spirit of excellence and constant learning to my work, so I can add real, tangible value to your life and help you achieve the goals that matter most to you and your family.</p>
                 </div>
-              </div>
             </div>
-            
-            <!-- Javen Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/javen.webp" alt="Javen, IT" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Shawn has been my friend since 2011 and when I met him for a review, he carefully anaylsed and provided the best solution according to what I really needed. He is not pushy at all and I enjoy working with him. Thanks bro and definitely will recommend you to my friends who need insurance and investments!"</p>
-                <div class="testimonial-author">
-                    <h3>Javen</h3>
-                    <span>IT</span>
-                </div>
-              </div>
-            </div>
+        </section>
 
-            <!-- Serene Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/serene.webp" alt="Serene, Researcher" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Even though Shawn was randomly assigned to me to assist me in my claim, he was really helpful and proactive in helping me with the claims department. I am very appreciative for him taking such initiative even though I am not officially his client. He actively follows up on the status, and knowledgeable on insurance products. "</p>
-                <div class="testimonial-author">
-                    <h3>Serene</h3>
-                    <span>Head Researcher</span>
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="bg-white py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="font-poppins text-3xl md:text-4xl font-bold text-brand-secondary mb-2">Success Stories from My Clients</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">The real measure of my success is the peace of mind and financial confidence my clients enjoy.</p>
+                    <a href="submit.html" target="_blank" class="mt-4 inline-block text-brand-primary font-semibold hover:underline">Want to share your story? Click here.</a>
                 </div>
-              </div>
+                <div id="testimonial-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonials will be loaded here by JavaScript -->
+                    <div class="text-center p-8">
+                        <i class="fas fa-spinner fa-spin text-3xl text-brand-primary"></i>
+                        <p class="mt-4 text-gray-600">Loading client stories...</p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <!-- Dr. Christina Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/dr_bing.webp" alt="Dr. Christina, Programme Manager" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Thank you Shawn for patiently helping me to plan for a steady foundation for my retirement. It's not just growth I'm chasing; it's the peace of mind that comes from reinforcing my retirement portfolio with something stable and performance-driven."</p>
-                <div class="testimonial-author">
-                    <h3>Dr. Christina</h3>
-                    <span>Programme Manager</span>
+        <!-- Content Section -->
+        <section id="content" class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12">
+                    <h2 class="font-poppins text-3xl md:text-4xl font-bold text-brand-secondary mb-2">Essential Insights for Your Singapore Journey</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Actionable advice to help you thrive financially.</p>
                 </div>
-              </div>
+                <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12">
+                    <h3 class="font-poppins text-2xl font-bold text-brand-secondary mb-4">New in Singapore? 5 Things Every Filipino Must Know</h3>
+                    <p class="text-gray-700 mb-6">Just arrived and getting settled? Navigating a new country can be overwhelming. Here are five essential tips to help you manage your finances and make the most of your new life in Singapore, right from the start.</p>
+                    <ul class="space-y-4 text-gray-600 list-disc list-inside mb-6">
+                        <li><span class="font-semibold">Mastering Remittance:</span> Don't just go to the first remittance center you see. I'll show you how to compare rates and fees to ensure more of your hard-earned money makes it home.</li>
+                        <li><span class="font-semibold">Grocery Hacks for the Savvy Saver:</span> Learn where the locals and long-time expats shop to save significantly on your weekly grocery bills without sacrificing quality.</li>
+                        <li><span class="font-semibold">A Taste of Home (Without Breaking the Bank):</span> Craving authentic Filipino food? I know the best spots like J&J Food Hub and Lucy's Kitchen that offer delicious meals at great prices.</li>
+                        <li><span class="font-semibold">Understanding Your Employment Pass / Work Permit:</span> What are your rights? What deductions are legal? Knowing the basics can save you from major headaches down the road.</li>
+                        <li><span class="font-semibold">Building Your 'Uwi-an' Fund from Day 1:</span> "Uwi-an" (going home for good) planning starts now. I'll share a simple strategy to start saving, no matter how small, for your future in the Philippines.</li>
+                    </ul>
+                    <p class="text-gray-700 font-medium">More content on property investing, avoiding scams, and retirement planning coming soon!</p>
+                </div>
             </div>
+        </section>
 
-            <!-- Maria Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/maria.webp" alt="Maria, Manager" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Shawn is very supportive and was of great help during my emergency gallbladder surgery. He ensured that I would get enough financial assistance. His expertise helped me recover over $15,000 in claims. Many thanks for his dedication and support in aiding me to get the most out of the benefits in my policies. "</p>
-                <div class="testimonial-author">
-                    <h3>Maria</h3>
-                    <span>Manager</span>
+        <!-- Call to Action Section -->
+        <section id="contact" class="bg-brand-secondary text-white py-16 md:py-24">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="font-poppins text-3xl md:text-4xl font-bold mb-4">Ready to Build Your Financial Future?</h2>
+                <p class="text-lg opacity-90 max-w-2xl mx-auto mb-8">Let's have a friendly, no-obligation chat about your goals. I'm here to listen and help you create a clear, actionable plan.</p>
+                <a href="https://wa.me/6594756001?text=Hi%20Shawn,%20I'd%20like%20to%20schedule%20a%20free%20consultation." target="_blank" class="btn-primary font-bold py-4 px-10 rounded-full inline-block text-xl">
+                    <i class="fab fa-whatsapp mr-2"></i> Book a Free Consultation
+                </a>
+                <div class="mt-8 text-lg opacity-90">
+                    Or reach out on: 
+                    <a href="https://www.facebook.com/shawn.dabi.90/" target="_blank" class="mx-2 hover:opacity-100 opacity-80 transition"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/shawnlemuel_/" target="_blank" class="mx-2 hover:opacity-100 opacity-80 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@shawnlemuel" target="_blank" class="mx-2 hover:opacity-100 opacity-80 transition"><i class="fab fa-tiktok"></i></a>
                 </div>
-              </div>
             </div>
-
-            <!-- Paolo Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/paolo_angon.webp" alt="Paolo, Nurse" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"When I came down with pneumonia, Shawn’s guidance through the claims process was a huge relief. He made sure my treatment was covered, giving me peace of mind during recovery. I’m truly thankful to have his steady support on my side."</p>
-                <div class="testimonial-author">
-                    <h3>Paolo</h3>
-                    <span>Nurse</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Paula Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/paula.webp" alt="Paula, Construction" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Shawn was there for me when I suffered from severe blood loss, showing up at the hospital without hesitation. He personally guided me through the claims documentation, making a tough moment much easier to handle. I’m deeply grateful for his care, commitment, and incredible support."</p>
-                <div class="testimonial-author">
-                    <h3>Paula</h3>
-                    <span>Construction</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Adrian Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/adrian.webp" alt="Adrian, Entreprenuer" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Shawn is an exceptionally patient and understanding individual. He consistently keeps me informed about my portfolio's performance with clarity and care. I'm truly grateful for his unwavering kindness, attentiveness, and dedication to helping others. His support has made a real difference in my financial journey. Thank you, Shawn!"</p>
-                <div class="testimonial-author">
-                    <h3>Adrian</h3>
-                    <span>Entreprenuer</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Aldwin Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/aldwin_balmeo.webp" alt="Aldwin, Engineer" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Shawn has been incredibly helpful and insightful. He took the time to carefully review my policies, demonstrating a genuine commitment to understanding my financial landscape. Through our discussions, he helped me clarify my portfolio needs and uncover new opportunities to maximize its value. I'm truly grateful to have crossed paths with Shawn—his dedication, professionalism, and personal touch set him apart. I wholeheartedly recommend him to anyone seeking thoughtful insurance and financial guidance."</p>
-                <div class="testimonial-author">
-                    <h3>Aldwin</h3>
-                    <span>Engineer</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Cheska Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/cheska.webp" alt="Cheska, Special Education" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Shawn is truly sincere and genuine—his approach stands out distinctly from others I've encountered. At the time, I was searching for both insurance coverage and a smart way to build my retirement portfolio. Shawn took the time to understand my goals, and his tailored recommendations gave me clarity and confidence. I’m genuinely impressed by the dedication and effort he puts into each person he works with. He treats your financial wellbeing like it's his own, and that kind of care is rare."</p>
-                <div class="testimonial-author">
-                    <h3>Cheska</h3>
-                    <span>Special Education</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Lara & Crispin Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/lara_shayne.webp" alt="Lara(IT) and Crispin(Engineer)" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Thank you Shawn for helping me uncover valuable insights—especially during a pivotal moment of change for my family. His guidance ensured my portfolio stayed aligned with our evolving needs. I wholeheartedly recommend Shawn to anyone seeking thoughtful and caring financial advice."</p>
-                <div class="testimonial-author">
-                    <h3>Lara & Crispin</h3>
-                    <span>IT & Engineer</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Nicholas Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/nicholas.webp" alt="Nicholas, IT" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Thank you Shawn for taking the time to understand my policy well and recommending changes that is really to my benefit. He really took the time to dig in and make good recommendations!"</p>
-                <div class="testimonial-author">
-                    <h3>Nicholas</h3>
-                    <span>IT</span>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Desmond Ng Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Desmond Ng" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"I've known Shawn since we were in high school, and he's one of the first agents I ever worked with. Until today, he has been helping me with great solutions and products. He is trustworthy, never pushy, and always has great suggestions. Thanks, Shawn, for your service! I highly recommend working with him."</p>
-                <div class="testimonial-author">
-                    <h3>Desmond Ng</h3>
-                    <span>Analyst</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Desmond & Harn Ru Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Desmond and Harn Ru" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for our family's future."</p>
-                <div class="testimonial-author">
-                    <h3>Desmond & Harn Ru</h3>
-                    <span>Young Family of 2</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Mitch Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Mitch, IT" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Mitch</h3>
-                    <span>IT</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Mischie Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/mischie.webp" alt="Mischie, Finance Manager" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Mischie</h3>
-                    <span>Finance Manager</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Emerson Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/emerson.webp" alt="Emerson, Nurse" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Emerson</h3>
-                    <span>Nurse</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Irene Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/irene.webp" alt="Irene, Medical Sales" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Irene</h3>
-                    <span>Medical Sales</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Moises Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/moises_fajardo.webp" alt="Moises, Nurse" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Moises</h3>
-                    <span>Nurse</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Joy Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/ate_joy.webp" alt="Joy, Process Engineer" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Joy</h3>
-                    <span>Process Engineer</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Charie Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Charie, Architect" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Charie</h3>
-                    <span>Architect</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Renee Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/renee.webp" alt="Renee, Architect" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Renee</h3>
-                    <span>Architect</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- John Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/john.webp" alt="John, Construction Manager" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>John</h3>
-                    <span>Construction Manager</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Divine Grace Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/divine_grace.webp" alt="Divine Grace, Architect" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Divine Grace</h3>
-                    <span>Architect</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Donna Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/donna_catimbang.webp" alt="Donna, Retail" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Donna</h3>
-                    <span>Retail</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Richie Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/richie_egipto.webp" alt="Richie, Engineer" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Richie</h3>
-                    <span>Engineer</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Edsel Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/edsel.webp" alt="Edsel, Semiconductor Manager" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Edsel</h3>
-                    <span>Semiconductor Manager</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Ruben Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Ruben, Architect Manager" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Ruben</h3>
-                    <span>Architect Manager</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Ryan & Mira Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/ryan_and_mira.webp" alt="Ryan(Entrepreneur) and Mira(Nurse)" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for our financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Ryan & Mira</h3>
-                    <span>Entrepreneur & Nurse</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Sammy Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/sammy_dabi.webp" alt="Sammy, Engineer" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Sammy</h3>
-                    <span>Engineer</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Shannen Lois Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/shannen_lois.webp" alt="Shannen Lois, Researcher" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Shannen Lois</h3>
-                    <span>Researcher</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Lizza Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/lizza_dabi.webp" alt="Lizza, Service Officer" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Lizza</h3>
-                    <span>Service Officer</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Victor Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Victor, IT" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Victor</h3>
-                    <span>IT</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Cristy Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Cristy, HR" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Cristy</h3>
-                    <span>HR</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Yang ZhiWei Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Yang ZhiWei, Social Work" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Yang ZhiWei</h3>
-                    <span>Social Work</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Noel Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Noel, Engineer" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Noel</h3>
-                    <span>Engineer</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Aileen Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Aileen, Sales" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Aileen</h3>
-                    <span>Sales</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Julie Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Julie, Nurse" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Julie</h3>
-                    <span>Nurse</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Aldrin Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Aldrin, Engineer" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Aldrin</h3>
-                    <span>Engineer</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Marichu Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Marichu, Chemist" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Marichu</h3>
-                    <span>Chemist</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Reizel Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Reizel, Engineer" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Reizel</h3>
-                    <span>Engineer</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Joey Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Joey, Semiconductors" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Joey</h3>
-                    <span>Semiconductors</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Zheng Jie Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Zheng Jie, IT" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Zheng Jie</h3>
-                    <span>IT</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Celine Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Celine, Manager" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Celine</h3>
-                    <span>Manager</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- William & Daphne Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="William and Daphne, Researchers" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for our financial future."</p>
-                <div class="testimonial-author">
-                    <h3>William & Daphne</h3>
-                    <span>Researchers</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Maria Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Maria, Semiconductors" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Maria</h3>
-                    <span>Semiconductors</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Ronette Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Ronette, Entreprenuer" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Ronette</h3>
-                    <span>Entreprenuer</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Dr Serene Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/serene.webp" alt="Dr Serene, Researcher" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Dr Serene</h3>
-                    <span>Researcher</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Jomar Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Jomar, Entreprenuer" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Jomar</h3>
-                    <span>Entreprenuer</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Lorenda Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Lorenda, Nurse" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Lorenda</h3>
-                    <span>Nurse</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Cheriel Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Cheriel, Veterinarian" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Cheriel</h3>
-                    <span>Veterinarian</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Naung Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Naung, Engineer" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Naung</h3>
-                    <span>Engineer</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Roderick Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Roderick, Engineer" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Roderick</h3>
-                    <span>Engineer</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Seth Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Seth, Entreprenuer" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Seth</h3>
-                    <span>Entreprenuer</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Ryan Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Ryan, IT" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Ryan</h3>
-                    <span>IT</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Abigael Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Abigael, Engineer" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Abigael</h3>
-                    <span>Engineer</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Joseph Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/placeholder.webp" alt="Joseph, Accounts" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Joseph</h3>
-                    <span>Accounts</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- James Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/james_and_hannah.webp" alt="James, Sales" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>James</h3>
-                    <span>Sales</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Hannah Testimonial -->
-            <div class="testimonial-card-new">
-              <div class="testimonial-img-wrapper">
-                <img src="assets/images/optimized_images/james_and_hannah.webp" alt="Hannah, Accounting" loading="lazy" width="400" height="400"/>
-              </div>
-              <div class="testimonial-content">
-                <p>"Placeholder testimony text. Shawn's guidance has been invaluable for my financial future."</p>
-                <div class="testimonial-author">
-                    <h3>Hannah</h3>
-                    <span>Accounting</span>
-                </div>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="cta-section">
-          <div class="container">
-              <h2>Ready to Plan Your Financial Future?</h2>
-              <p>Let's have a no-obligation chat to see how I can help you achieve your goals in Singapore and beyond.</p>
-              <a href="https://wa.me/6594756001" target="_blank" class="cta-button-large">Book a Free Consultation</a>
-          </div>
-      </section>
+        </section>
     </main>
 
-    <footer class="footer-section">
-      <div class="container">
-        <img src="assets/images/optimized_images/va_logo.png" alt="Viz Alliance Logo" class="logo-footer" width="120"/>
-        <p>&copy; <span id="year"></span> Shawn Dabi. All Rights Reserved.</p>
-        <p>Representing Viz Alliance Pte. Ltd</p>
-      </div>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+            <p>&copy; <span id="year"></span> Shawn Dabi. All Rights Reserved.</p>
+            <p class="text-sm">Representing Viz Alliance Pte. Ltd</p>
+            <p class="text-xs mt-4">This website is for informational purposes only. All financial decisions should be made with the guidance of a qualified professional.</p>
+        </div>
     </footer>
 
-    <script src="js/main.js"></script>
-  </body>
+    <!-- Firebase SDK -->
+    <script type="module">
+        // IMPORTANT: Paste your Firebase config object here
+        const firebaseConfig = {
+            apiKey: "AIzaSyB5lFiB9grDsedR9osrB2zvE71l91zHjz0",
+            authDomain: "va-solutions-eadd3.firebaseapp.com",
+            projectId: "va-solutions-eadd3",
+            storageBucket: "va-solutions-eadd3.firebasestorage.app",
+            messagingSenderId: "365317326824",
+            appId: "1:365317326824:web:f7e4c5da7aabe12120865d",
+            measurementId: "G-8PS1VPG0R5"
+        };
+
+        // Import functions from the SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, collection, query, where, onSnapshot, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // --- Hero Slideshow Logic ---
+        const slideshowContainer = document.getElementById('hero-slideshow');
+        
+        function loadHeroSlideshow(imageUrls) {
+            if (!slideshowContainer || imageUrls.length === 0) {
+                slideshowContainer.innerHTML = `<img src="https://placehold.co/600x600/005F73/FFFFFF?text=Shawn+Dabi" alt="Shawn Dabi Financial Planner" class="rounded-2xl w-full h-full object-cover">`;
+                return;
+            }
+
+            slideshowContainer.innerHTML = ''; // Clear spinner
+            imageUrls.forEach((url, index) => {
+                const img = document.createElement('img');
+                img.src = url;
+                img.alt = `Client photo ${index + 1}`;
+                img.className = 'slide';
+                if (index === 0) img.classList.add('active');
+                slideshowContainer.appendChild(img);
+            });
+
+            let currentSlide = 0;
+            const slides = slideshowContainer.querySelectorAll('.slide');
+            
+            if (slides.length > 1) {
+                setInterval(() => {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }, 5000); // Change image every 5 seconds
+            }
+        }
+
+        // --- Testimonial Loading Logic ---
+        const testimonialGrid = document.getElementById('testimonial-grid');
+        
+        if (testimonialGrid) {
+            // UPDATED QUERY: Now orders by your custom order first, then by date.
+            const q = query(
+                collection(db, "testimonials"), 
+                where("isApproved", "==", true), 
+                orderBy("displayOrder", "asc"),
+                orderBy("submittedAt", "desc")
+            );
+
+            onSnapshot(q, (querySnapshot) => {
+                const approvedImageUrls = [];
+                if (querySnapshot.empty) {
+                    testimonialGrid.innerHTML = '<p class="text-center text-gray-600 col-span-full">Be the first to share your story!</p>';
+                    loadHeroSlideshow([]); // Load slideshow with default
+                    return;
+                }
+
+                let testimonialsHTML = '';
+                querySnapshot.forEach((doc) => {
+                    const story = doc.data();
+                    if (story.imageUrl) {
+                        approvedImageUrls.push(story.imageUrl);
+                    }
+                    const placeholderImg = `https://placehold.co/400x300/005F73/FFFFFF?text=${story.clientName.charAt(0)}`;
+                    const imageSrc = story.imageUrl || placeholderImg;
+
+                    testimonialsHTML += `
+                        <div class="testimonial-card bg-white rounded-2xl shadow-md overflow-hidden flex flex-col">
+                            <img src="${imageSrc}" alt="Photo of ${story.clientName}" class="w-full h-48 object-cover" onerror="this.src='${placeholderImg}'">
+                            <div class="p-6 flex flex-col flex-grow">
+                                <p class="text-gray-600 mb-4 flex-grow">"${story.testimonial}"</p>
+                                <div class="mt-auto">
+                                    <h4 class="font-poppins font-bold text-brand-secondary">${story.clientName}</h4>
+                                    <p class="text-sm text-brand-primary font-medium">${story.profession}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                testimonialGrid.innerHTML = testimonialsHTML;
+                loadHeroSlideshow(approvedImageUrls); // Load slideshow with fetched images
+            }, (error) => {
+                console.error("Error fetching testimonials: ", error);
+                testimonialGrid.innerHTML = '<p class="text-center text-red-600 col-span-full">Could not load testimonials at this time.</p>';
+                loadHeroSlideshow([]); // Load slideshow with default on error
+            });
+        }
+
+        // --- UI Logic ---
+        document.getElementById('year').textContent = new Date().getFullYear();
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
 </html>
