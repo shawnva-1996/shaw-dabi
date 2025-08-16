@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate OFW Guide to Singapore | Shawn Dabi</title>
+    <meta name="description" content="Your essential guide to thriving in Singapore! Learn how to save money on groceries, find the best mobile plans, avoid scams, and understand Singlish. Tara, let's go!">
+    <meta name="keywords" content="ofw guide singapore, filipino in singapore, save money singapore, cheap mobile plan singapore, avoid scams ofw, singlish guide, filipino food singapore">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>SD</text></svg>">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: #212427; background-color: #F8F9FA; }
+        h1, h2, h3, h4, .font-poppins { font-family: 'Poppins', sans-serif; }
+        .bg-brand-secondary { background-color: #005F73; }
+        .text-brand-secondary { color: #005F73; }
+        .text-brand-primary { color: #FF7A59; }
+        .btn-primary { background-color: #FF7A59; color: white; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .feature-card { background-color: white; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+        #map { height: 400px; border-radius: 0.5rem; z-index: 10; background-color: #E5E7EB; }
+        .story-highlight {
+            background-color: #FFFBEB; /* A light yellow */
+            border-left: 4px solid #FBBF24; /* A gold color */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        .solution-box {
+            background-color: #F0F9FF; /* A light blue */
+            border-left: 4px solid #3B82F6; /* A strong blue */
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+        .amount-highlight {
+            font-weight: 700;
+            color: #DC2626; /* A strong red */
+            background-color: #FEE2E2;
+            padding: 0.1rem 0.4rem;
+            border-radius: 0.25rem;
+        }
+        .toc-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .toc-link:hover {
+            background-color: #FEF3C7; /* Light yellow on hover */
+            color: #92400E; /* Darker text on hover */
+            transform: translateX(4px);
+        }
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background-color: #FF7A59;
+            width: 0%;
+            z-index: 100;
+            transition: width 0.1s linear;
+        }
+    </style>
+</head>
+<body>
+    <div id="progress-bar"></div>
+
+    <nav id="navbar" class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="font-poppins text-2xl font-bold text-brand-secondary">Shawn Dabi</a>
+            <a href="https://wa.me/6580732938" target="_blank" class="btn-primary font-bold py-2 px-5 rounded-full">Let's Talk</a>
+        </div>
+    </nav>
+
+    <header class="bg-white">
+        <div class="container mx-auto px-6 py-12 md:py-20 text-center">
+            <span class="font-poppins text-brand-primary font-semibold">YOUR SURVIVAL GUIDE</span>
+            <h1 class="text-4xl md:text-6xl font-bold text-brand-secondary mt-2 mb-4">Bagong Salta sa Singapore? ✨</h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Welcome, kabayan! This guide is for you. Let's make your life here easier, from saving money to staying safe. Think of me as your digital <strong>ate</strong>. We got this, <strong>kaya mo 'yan!</strong></p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        
+        <!-- Table of Contents -->
+        <section id="table-of-contents" class="mb-16">
+            <div class="max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow-lg border-t-4 border-brand-primary">
+                <h2 class="font-poppins text-2xl font-bold text-brand-secondary mb-4 text-center">What's Inside?</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+                    <a href="#groceries" class="block p-3 font-semibold text-gray-700 rounded-lg toc-link"><i class="fas fa-shopping-cart w-6 mr-2 text-brand-primary"></i>Tipid Grocery Hacks</a>
+                    <a href="#mobile-plans" class="block p-3 font-semibold text-gray-700 rounded-lg toc-link"><i class="fas fa-mobile-alt w-6 mr-2 text-brand-primary"></i>Sulit Mobile Plans</a>
+                    <a href="#scams" class="block p-3 font-semibold text-gray-700 rounded-lg toc-link"><i class="fas fa-shield-alt w-6 mr-2 text-brand-primary"></i>Ingat sa Scam</a>
+                    <a href="#rental" class="block p-3 font-semibold text-gray-700 rounded-lg toc-link"><i class="fas fa-home w-6 mr-2 text-brand-primary"></i>Rental Rights</a>
+                    <a href="#singlish" class="block p-3 font-semibold text-gray-700 rounded-lg toc-link"><i class="fas fa-comments w-6 mr-2 text-brand-primary"></i>Singlish Guide</a>
+                    <a href="#filipino-food" class="block p-3 font-semibold text-gray-700 rounded-lg toc-link"><i class="fas fa-utensils w-6 mr-2 text-brand-primary"></i>Pinoy Food Spots</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="space-y-20">
+            <!-- Section 1: Groceries -->
+            <section id="groceries">
+                <h2 class="font-poppins text-3xl font-bold text-brand-secondary mb-8 text-center">Tipid Hacks: Saan Makakabili ng Murang Groceries? 🛒</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1 space-y-6">
+                        <div>
+                            <p class="text-gray-700">That first trip to the supermarket can be a real wake-up call. "Grabe, ang mahal ng bilihin!" you might think, looking at your receipt. You work so hard for your money, and every dollar you overspend on groceries is a dollar you can't send home or save for your future. Over a year, that small difference can add up to thousands of dollars na sana napunta sa pamilya mo.</p>
+                            <p class="text-gray-700 mt-4">Pero may paraan, kabayan. The secret is to shop where the locals shop. You can cut your grocery bill significantly without sacrificing quality by avoiding the fancy supermarkets in malls and going where the heartlanders go for the best deals:</p>
+                        </div>
+                        <div class="solution-box">
+                            <ul class="space-y-2 list-disc list-inside text-blue-800">
+                                <li><strong>Sheng Siong:</strong> Your go-to for fresh produce, seafood, and meat at prices that are often much lower than the big chains.</li>
+                                <li><strong>Venus Supermarket:</strong> A hidden gem for all your favorite Filipino products, from snacks to toiletries, at great prices.</li>
+                                <li><strong>Swanston (at People's Park):</strong> A well-known store for Filipino groceries.
+                                    <ul class="list-none pl-4 text-sm mt-1">
+                                        <li><i class="fas fa-map-marker-alt fa-fw mr-2 text-blue-500"></i>32 New Market Rd, #02-1004/7</li>
+                                        <li><i class="fas fa-phone fa-fw mr-2 text-blue-500"></i>6534 5776</li>
+                                        <li><i class="fas fa-clock fa-fw mr-2 text-blue-500"></i>10am–8:30pm daily</li>
+                                        <li class="text-xs text-blue-600 pl-6"><em>(Suggestion: Staying open until 9:30pm on weekends could be great for shoppers!)</em></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                         <div class="mt-6 bg-white p-4 rounded-lg shadow-sm border">
+                            <h4 class="font-semibold text-brand-secondary">Hanapin ang Pinakamalapit na Store!</h4>
+                            <p class="text-gray-600 text-sm mb-3">Click the button to use your location and find the nearest budget-friendly supermarket.</p>
+                            <button id="find-nearest-btn" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
+                                <i class="fas fa-location-arrow mr-2"></i>Find Nearest Store
+                            </button>
+                            <p id="map-result" class="text-sm text-blue-700 mt-2 font-medium"></p>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <div id="map" class="shadow-lg flex items-center justify-center">
+                            <p class="text-gray-500">Map loading...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Mobile Plans -->
+            <section id="mobile-plans">
+                <h2 class="font-poppins text-3xl font-bold text-brand-secondary mb-8 text-center">Super Sulit Mobile Plans na Hindi Uubos ng Sweldo Mo! 📱</h2>
+                <div class="max-w-3xl mx-auto text-center space-y-6">
+                     <p class="text-gray-700">Signing a long-term contract for a "free" phone feels like a good deal, but it's a trap for OFWs. What if there's a family emergency and you need to go home for good? Breaking that contract means paying hundreds of dollars in penalty fees, wiping out your savings when you need them most. Huwag kang papasilaw sa bagong phone!</p>
+                    <div class="solution-box">
+                        <h3 class="font-poppins font-bold text-blue-800">The Solution: Freedom with a SIM-Only Plan.</h3>
+                        <p class="text-blue-700 mt-2 mb-6">Get massive data and flexibility for a low monthly price with no strings attached. You can cancel anytime. Here are some of the best value options:</p>
+                        <div class="overflow-x-auto bg-white rounded-lg shadow">
+                            <table class="w-full text-sm text-left text-gray-500">
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3">Provider</th>
+                                        <th scope="col" class="px-6 py-3">Data</th>
+                                        <th scope="col" class="px-6 py-3">Price (SGD)</th>
+                                        <th scope="col" class="px-6 py-3">Best For</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white border-b hover:bg-gray-50">
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><a href="https://simba.sg/" target="_blank" class="text-blue-600 hover:underline">SIMBA</a></th>
+                                        <td class="px-6 py-4">400GB</td>
+                                        <td class="px-6 py-4">~$10.00</td>
+                                        <td class="px-6 py-4">Huge data & free roaming to nearby countries</td>
+                                    </tr>
+                                    <tr class="bg-white border-b hover:bg-gray-50">
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><a href="https://www.gomo.sg/" target="_blank" class="text-blue-600 hover:underline">GOMO (by Singtel)</a></th>
+                                        <td class="px-6 py-4">300GB</td>
+                                        <td class="px-6 py-4">~$15.00</td>
+                                        <td class="px-6 py-4">Reliable network and big data bundles</td>
+                                    </tr>
+                                    <tr class="bg-white border-b hover:bg-gray-50">
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><a href="https://www.giga.com.sg/" target="_blank" class="text-blue-600 hover:underline">giga! (by Starhub)</a></th>
+                                        <td class="px-6 py-4">300GB</td>
+                                        <td class="px-6 py-4">~$15.28</td>
+                                        <td class="px-6 py-4">Data rollover (keep unused data)</td>
+                                    </tr>
+                                     <tr class="bg-white hover:bg-gray-50">
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><a href="https://www.zero1.sg/" target="_blank" class="text-blue-600 hover:underline">Zero1</a></th>
+                                        <td class="px-6 py-4">100GB</td>
+                                        <td class="px-6 py-4">~$7.06</td>
+                                        <td class="px-6 py-4">The absolute cheapest option for moderate users</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                         <p class="text-xs text-blue-600 mt-2 text-center">Note: Prices and data are based on August 2025 estimates. Always check the provider's website!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Scam Avoidance -->
+            <section id="scams">
+                <h2 class="font-poppins text-3xl font-bold text-brand-secondary mb-8 text-center">Ingat sa Scam! How to Protect Your Hard-Earned Money 🛡️</h2>
+                <div class="max-w-3xl mx-auto text-center space-y-6">
+                    <p class="text-gray-700">An ad on Facebook for a room rental that's surprisingly cheap. A WhatsApp message offering an easy, high-paying job. It feels like a lucky break, a blessing. But this "lucky break" is how scammers steal millions from hardworking OFWs like us.</p>
+                    <div class="story-highlight">
+                        <p class="text-yellow-800">Imagine this: a Reddit user in Singapore shared how they lost <span class="amount-highlight">$12,000</span> on a rental deposit scam. The scammers used a real agent's credentials, had a "partner" show the unit, and then vanished after the money was transferred. Another story from the Ministry of Manpower (MOM) tells of "Cherry," a Filipino domestic worker who, desperate for a loan for her mother's hospital bills, was forced to pay a <span class="amount-highlight">$200</span> "admin fee" and was then extorted for more money with threats. They prey on your hope and your urgency. They are experts at creating pressure so you don't have time to think.</p>
+                    </div>
+                    <div class="solution-box">
+                        <h3 class="font-poppins font-bold text-blue-800">The Solution: Trust NO ONE online. Verify EVERYTHING offline.</h3>
+                        <p class="text-blue-700 mb-4">You have the power to protect yourself. Follow these non-negotiable rules:</p>
+                        <div class="grid md:grid-cols-2 gap-4 text-left">
+                            <div class="bg-white p-4 rounded-lg border border-blue-200">
+                                <h4 class="font-bold text-brand-secondary">🚨 For Rental Scams</h4>
+                                <p class="text-gray-600 text-sm"><strong>ACTION:</strong> NEVER pay a deposit before you physically see the unit. ALWAYS verify the agent's phone number on the official <a href="https://www.cea.gov.sg/public-register" target="_blank" class="font-bold text-blue-600 hover:underline">CEA Public Register</a> website. If the number doesn't match, it's a scam. Period.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border border-blue-200">
+                                <h4 class="font-bold text-brand-secondary">🚨 For Job Scams</h4>
+                                <p class="text-gray-600 text-sm"><strong>ACTION:</strong> A legitimate company will NEVER ask you to pay them or use your own money to perform tasks. If they do, it's a scam. Block and report them immediately.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Rental Matters -->
+            <section id="rental">
+                <h2 class="font-poppins text-3xl font-bold text-brand-secondary mb-8 text-center">Your Home in SG: Understanding Your Rental Rights 🏡</h2>
+                 <div class="max-w-3xl mx-auto text-center space-y-6">
+                    <p class="text-gray-700">Finding a place to live is stressful enough. But the real fear is being cheated by a landlord. For a two-year lease, you hand over a security deposit that's worth two months of your hard-earned salary. Imagine working for 60 days straight, only to have that money taken from you at the end of your lease because of a small scratch on the floor that was already there when you moved in. Without proof, it's your word against theirs.</p>
+                    <div class="solution-box">
+                        <h3 class="font-poppins font-bold text-blue-800">The Solution: Your Tenancy Agreement (TA) is your shield.</h3>
+                        <p class="text-blue-700 mb-4">Your power lies in the contract you sign *before* you move in. Basahin mong mabuti! Insist on these two things to protect yourself:</p>
+                         <ul class="space-y-4 text-blue-800 text-left">
+                            <li class="flex items-start">
+                                <i class="fas fa-file-signature text-brand-secondary mr-3 mt-1 fa-fw"></i>
+                                <div><strong>The Diplomatic Clause:</strong> This is your non-negotiable safety net. It lets you legally break the lease early (usually after 12 months) if you lose your job or are transferred. Without it, you are liable for the full rent of the entire contract.</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-camera text-brand-secondary mr-3 mt-1 fa-fw"></i>
+                                <div><strong>Inventory List & Photo-Taking:</strong> On handover day, be meticulous. Take photos and videos of EVERYTHING, especially existing damages. Email them to the landlord and agent as a record. This is your ultimate proof to get your full deposit back.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section 3: Singlish -->
+            <section id="singlish">
+                <h2 class="font-poppins text-3xl font-bold text-brand-secondary mb-8 text-center">"Can or Not?" Your Singlish Survival Guide 🇸🇬</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                         <!-- Image Placeholder -->
+                        <div class="bg-gray-200 h-64 w-full rounded-lg flex items-center justify-center shadow-lg">
+                             <p class="text-gray-500"></p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-gray-700 mb-4">Feeling like an outsider because you can't understand the local slang? Don't be <strong>blur sotong</strong>! Knowing a few key Singlish phrases will help you connect with locals, order food like a pro, and feel more at home. Here are some essentials:</p>
+                         <ul class="space-y-3 text-gray-600 list-disc list-inside">
+                            <li><span class="font-semibold text-brand-secondary">Makan:</span> To eat. "You makan already?" (Kumain ka na?).</li>
+                            <li><span class="font-semibold text-brand-secondary">Chope:</span> To reserve a seat, usually with a tissue packet. "Help me chope the table!".</li>
+                            <li><span class="font-semibold text-brand-secondary">Tapao:</span> Takeaway. "Uncle, one chicken rice, tapao." (For takeout).</li>
+                            <li><span class="font-semibold text-brand-secondary">Paiseh:</span> A feeling of embarrassment, or to say "excuse me".</li>
+                            <li><span class="font-semibold text-brand-secondary">Sian:</span> The feeling of being bored or fed up. "Data entry all day, so sian!".</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 6: Filipino Food -->
+            <section id="filipino-food">
+                <h2 class="font-poppins text-3xl font-bold text-brand-secondary mb-8 text-center">Nami-miss Mo na Ba ang Adobo? 🍲</h2>
+                <p class="text-gray-700 max-w-3xl mx-auto text-center mb-8">That deep feeling of homesickness that only a good plate of Filipino food can cure is real. When you need a taste of home, here are some great spots to get your Pinoy food fix:</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="feature-card p-6 flex flex-col">
+                        <h3 class="font-poppins font-bold text-brand-secondary text-xl mb-2">J & J Food Hub</h3>
+                        <div class="text-gray-600 text-sm space-y-2 flex-grow">
+                            <p><i class="fas fa-map-marker-alt w-4 text-center mr-1 text-brand-primary"></i> Blk 177 Toa Payoh Central, #01-176, Singapore 310177</p>
+                            <p><i class="fas fa-clock w-4 text-center mr-1 text-brand-primary"></i> Opens 11 AM, Closed Mondays</p>
+                        </div>
+                        <a href="https://www.facebook.com/p/J-Js-Foodhub-61559199146424/" target="_blank" class="mt-4 text-brand-primary font-semibold hover:underline">View on Facebook <i class="fas fa-arrow-right text-xs"></i></a>
+                    </div>
+                    <div class="feature-card p-6 flex flex-col">
+                        <h3 class="font-poppins font-bold text-brand-secondary text-xl mb-2">Luci's Kitchen</h3>
+                         <div class="text-gray-600 text-sm space-y-2 flex-grow">
+                            <p><i class="fas fa-map-marker-alt w-4 text-center mr-1 text-brand-primary"></i> Lucky Plaza #02-58/59, 304 Orchard Road, 238863</p>
+                            <p><i class="fas fa-clock w-4 text-center mr-1 text-brand-primary"></i> Opens 12 PM (10 AM Sundays)</p>
+                        </div>
+                        <a href="https://www.facebook.com/lucikitchen.sg/" target="_blank" class="mt-4 text-brand-primary font-semibold hover:underline">View on Facebook <i class="fas fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+                 <p class="text-center mt-6 text-gray-600 font-medium">I'll be sharing more food discoveries soon. Stay tuned!</p>
+            </section>
+
+            <!-- Comments Section -->
+            <section id="comments">
+                <h2 class="font-poppins text-3xl font-bold text-brand-secondary mb-6 text-center">Share Your Thoughts, Kabayan! 💬</h2>
+                <div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+                    <p class="text-gray-600 mb-4">Got a question? A tip to share? O baka gusto mo lang mag-vent? This is a safe space. You can post anonymously or leave your name. Let's help each other out!</p>
+                    
+                    <div id="firebase-comments-placeholder">
+                        <form id="comment-form" class="space-y-4">
+                            <div>
+                                <label for="comment-name" class="block text-sm font-medium text-gray-700">Name (Optional)</label>
+                                <input type="text" id="comment-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Juan dela Cruz">
+                            </div>
+                            <div>
+                                <label for="comment-text" class="block text-sm font-medium text-gray-700">Your Message</label>
+                                <textarea id="comment-text" rows="4" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Share your experience..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary font-bold py-2 px-6 rounded-full">Post Comment</button>
+                        </form>
+                        <div id="comments-list" class="mt-8 space-y-4">
+                            <div class="border-t pt-4">
+                                <p class="text-gray-500">Loading comments...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+            <p>&copy; <span id="year"></span> Shawn Dabi. All Rights Reserved.</p>
+            <p class="text-sm">Representing Viz Alliance Pte. Ltd</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // --- Progress Bar Logic ---
+        const progressBar = document.getElementById('progress-bar');
+        window.addEventListener('scroll', () => {
+            const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.scrollY / scrollableHeight) * 100;
+            progressBar.style.width = `${scrolled}%`;
+        });
+
+        // --- Google Maps Logic ---
+        let map;
+        let userMarker;
+        const findNearestBtn = document.getElementById('find-nearest-btn');
+        const mapResult = document.getElementById('map-result');
+
+        const stores = [
+            { name: 'Venus Supermarket', type: 'Venus', lat: 1.2885, lng: 103.8325 },
+            { name: 'Sheng Siong @ McNair', type: 'Sheng Siong', lat: 1.3175, lng: 103.8617 },
+            { name: 'Sheng Siong @ Jurong West', type: 'Sheng Siong', lat: 1.3485, lng: 103.7057 },
+            { name: 'Sheng Siong @ Tanglin Halt', type: 'Sheng Siong', lat: 1.2983, lng: 103.8035 },
+            { name: 'Sheng Siong @ Bedok North', type: 'Sheng Siong', lat: 1.3320, lng: 103.9344 },
+            { name: "Swanston", type: 'Filipino Goods', lat: 1.2845, lng: 103.8437 }
+        ];
+
+        function initMap() {
+            const singapore = { lat: 1.3521, lng: 103.8198 };
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 12,
+                center: singapore,
+            });
+
+            const infoWindow = new google.maps.InfoWindow();
+
+            stores.forEach(store => {
+                const marker = new google.maps.Marker({
+                    position: { lat: store.lat, lng: store.lng },
+                    map: map,
+                    title: store.name,
+                });
+
+                marker.addListener("click", () => {
+                    infoWindow.setContent(`<strong>${store.name}</strong><br>${store.type}`);
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
+
+        findNearestBtn.addEventListener('click', () => {
+            mapResult.textContent = 'Requesting your location... Please approve the request in your browser.';
+            
+            if (window.isSecureContext && navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const userPos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    if (userMarker) {
+                        userMarker.setMap(null);
+                    }
+                    
+                    userMarker = new google.maps.Marker({
+                        position: userPos,
+                        map: map,
+                        title: "You are here!",
+                        icon: {
+                            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                        }
+                    });
+
+                    let nearestStore = null;
+                    let minDistance = Infinity;
+
+                    stores.forEach(store => {
+                        const storePos = new google.maps.LatLng(store.lat, store.lng);
+                        const userLatLng = new google.maps.LatLng(userPos.lat, userPos.lng);
+                        const distance = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, storePos);
+                        
+                        if (distance < minDistance) {
+                            minDistance = distance;
+                            nearestStore = store;
+                        }
+                    });
+
+                    if (nearestStore) {
+                        mapResult.textContent = `Nearest store is ${nearestStore.name} (${(minDistance / 1000).toFixed(2)} km away).`;
+                        map.panTo({ lat: nearestStore.lat, lng: nearestStore.lng });
+                        map.setZoom(14);
+                    }
+                }, (error) => {
+                     switch(error.code) {
+                        case error.PERMISSION_DENIED:
+                            mapResult.textContent = "Location permission denied. Please enable it in your browser settings.";
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            mapResult.textContent = "Location information is unavailable.";
+                            break;
+                        case error.TIMEOUT:
+                            mapResult.textContent = "The request to get user location timed out.";
+                            break;
+                        default:
+                            mapResult.textContent = "An unknown error occurred.";
+                            break;
+                    }
+                });
+            } else {
+                 mapResult.textContent = "Location access is only available on secure (https://) connections or is not supported by your browser.";
+            }
+        });
+
+        // --- Firebase Comments Logic Placeholder ---
+        console.log("Firebase logic for comments would be initialized here.");
+    </script>
+    
+    <!-- IMPORTANT: Replace YOUR_API_KEY with your actual Google Maps API key -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_b4gGG92JTJa2GWKN1xQWPqduAs15BEM&callback=initMap&libraries=geometry&v=weekly" async defer></script>
+
+</body>
+</html>
