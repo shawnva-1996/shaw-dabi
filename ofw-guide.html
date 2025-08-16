@@ -67,6 +67,17 @@
             z-index: 100;
             transition: width 0.1s linear;
         }
+        .back-to-top-link {
+            display: inline-block;
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            color: #6B7280;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .back-to-top-link:hover {
+            color: #1F2937;
+        }
     </style>
 </head>
 <body>
@@ -143,6 +154,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="text-center">
+                    <a href="#table-of-contents" class="back-to-top-link"><i class="fas fa-arrow-up mr-2"></i>Back to "What's Inside"</a>
+                </div>
             </section>
 
             <!-- Section 2: Mobile Plans -->
@@ -194,6 +208,9 @@
                          <p class="text-xs text-blue-600 mt-2 text-center">Note: Prices and data are based on August 2025 estimates. Always check the provider's website!</p>
                     </div>
                 </div>
+                <div class="text-center">
+                    <a href="#table-of-contents" class="back-to-top-link"><i class="fas fa-arrow-up mr-2"></i>Back to "What's Inside"</a>
+                </div>
             </section>
 
             <!-- Section 4: Scam Avoidance -->
@@ -219,6 +236,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="text-center">
+                    <a href="#table-of-contents" class="back-to-top-link"><i class="fas fa-arrow-up mr-2"></i>Back to "What's Inside"</a>
+                </div>
             </section>
 
             <!-- Section 5: Rental Matters -->
@@ -241,6 +261,9 @@
                         </ul>
                     </div>
                 </div>
+                <div class="text-center">
+                    <a href="#table-of-contents" class="back-to-top-link"><i class="fas fa-arrow-up mr-2"></i>Back to "What's Inside"</a>
+                </div>
             </section>
             
             <!-- Section 3: Singlish -->
@@ -248,9 +271,8 @@
                 <h2 class="font-poppins text-3xl font-bold text-brand-secondary mb-8 text-center">"Can or Not?" Your Singlish Survival Guide 🇸🇬</h2>
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div>
-                         <!-- Image Placeholder -->
-                        <div class="bg-gray-200 h-64 w-full rounded-lg flex items-center justify-center shadow-lg">
-                             <p class="text-gray-500"></p>
+                        <div class="bg-gray-200 h-64 w-full rounded-lg flex items-center justify-center shadow-lg overflow-hidden"> 
+                            <img src="assets/images/singlish.png" alt="A colorful graphic explaining common Singlish phrases" class="w-full h-full object-cover">
                         </div>
                     </div>
                     <div>
@@ -263,6 +285,9 @@
                             <li><span class="font-semibold text-brand-secondary">Sian:</span> The feeling of being bored or fed up. "Data entry all day, so sian!".</li>
                         </ul>
                     </div>
+                </div>
+                <div class="text-center">
+                    <a href="#table-of-contents" class="back-to-top-link"><i class="fas fa-arrow-up mr-2"></i>Back to "What's Inside"</a>
                 </div>
             </section>
 
@@ -289,6 +314,9 @@
                     </div>
                 </div>
                  <p class="text-center mt-6 text-gray-600 font-medium">I'll be sharing more food discoveries soon. Stay tuned!</p>
+                <div class="text-center">
+                    <a href="#table-of-contents" class="back-to-top-link"><i class="fas fa-arrow-up mr-2"></i>Back to "What's Inside"</a>
+                </div>
             </section>
 
             <!-- Comments Section -->
@@ -311,7 +339,7 @@
                         </form>
                         <div id="comments-list" class="mt-8 space-y-4">
                             <div class="border-t pt-4">
-                                <p class="text-gray-500">Loading comments...</p>
+                                <p class="text-gray-500" id="comments-loader">Loading comments...</p>
                             </div>
                         </div>
                     </div>
@@ -326,6 +354,93 @@
             <p class="text-sm">Representing Viz Alliance Pte. Ltd</p>
         </div>
     </footer>
+
+    <script type="module">
+        // Firebase Imports
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // IMPORTANT: Add your Firebase project config here
+        const firebaseConfig = {
+            apiKey: "AIzaSyB5lFiB9grDsedR9osrB2zvE71l91zHjz0",
+            authDomain: "va-solutions-eadd3.firebaseapp.com",
+            projectId: "va-solutions-eadd3",
+            storageBucket: "va-solutions-eadd3.firebasestorage.app",
+            messagingSenderId: "365317326824",
+            appId: "1:365317326824:web:f7e4c5da7aabe12120865d",
+            measurementId: "G-8PS1VPG0R5"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // --- Firebase Comments Logic ---
+        const commentsCollection = collection(db, 'ofw-guide-comments');
+        const commentForm = document.getElementById('comment-form');
+        const commentsList = document.getElementById('comments-list');
+        const commentsLoader = document.getElementById('comments-loader');
+
+        // Handle form submission
+        commentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const nameInput = document.getElementById('comment-name');
+            const textInput = document.getElementById('comment-text');
+
+            const name = nameInput.value.trim() || 'Anonymous';
+            const text = textInput.value.trim();
+
+            if (text) {
+                try {
+                    await addDoc(commentsCollection, {
+                        name: name,
+                        text: text,
+                        timestamp: serverTimestamp()
+                    });
+                    nameInput.value = '';
+                    textInput.value = '';
+                } catch (error) {
+                    console.error("Error adding document: ", error);
+                    alert("Sorry, there was an error posting your comment. Please try again.");
+                }
+            }
+        });
+
+        // Listen for real-time updates and render comments
+        const q = query(commentsCollection, orderBy('timestamp', 'desc'));
+        onSnapshot(q, (querySnapshot) => {
+            commentsList.innerHTML = ''; // Clear existing comments
+            if (querySnapshot.empty) {
+                commentsLoader.textContent = 'Be the first to comment!';
+                commentsList.appendChild(commentsLoader.parentElement);
+            } else {
+                 querySnapshot.forEach((doc) => {
+                    const comment = doc.data();
+                    const commentEl = document.createElement('div');
+                    commentEl.className = 'border-t pt-4';
+                    
+                    const name = comment.name || 'Anonymous';
+                    const text = comment.text;
+                    const date = comment.timestamp ? comment.timestamp.toDate().toLocaleString() : 'Just now';
+
+                    commentEl.innerHTML = `
+                        <div class="flex items-start space-x-3">
+                            <div class="flex-shrink-0 bg-gray-200 h-10 w-10 rounded-full flex items-center justify-center font-bold text-gray-600">${name.charAt(0)}</div>
+                            <div>
+                                <p class="font-semibold text-gray-800">${name}</p>
+                                <p class="text-gray-600">${text}</p>
+                                <p class="text-xs text-gray-400 mt-1">${date}</p>
+                            </div>
+                        </div>
+                    `;
+                    commentsList.appendChild(commentEl);
+                });
+            }
+        }, (error) => {
+            console.error("Error fetching comments: ", error);
+            commentsLoader.textContent = 'Could not load comments at this time.';
+        });
+    </script>
 
     <script>
         // Set current year in footer
@@ -439,9 +554,6 @@
                  mapResult.textContent = "Location access is only available on secure (https://) connections or is not supported by your browser.";
             }
         });
-
-        // --- Firebase Comments Logic Placeholder ---
-        console.log("Firebase logic for comments would be initialized here.");
     </script>
     
     <!-- IMPORTANT: Replace YOUR_API_KEY with your actual Google Maps API key -->
